@@ -1,0 +1,19 @@
+h3{
+    padding-top: 10px;
+    color: #ffffff;
+    font: normal 36px 'Cookie', cursive;
+    margin: 0;
+}
+span{
+    color: #e0ac1c;
+}
+.navbar-nav .nav-item:hover .dropdown-menu {
+    display: block;
+    color:white;
+}
+
+.btn-outline-light{
+    background-color:  #e0ac1c;
+    color: white;
+   
+}
