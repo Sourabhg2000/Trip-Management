@@ -5,9 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
-
-public class CustomerDto {
+public class GuideDto {
 	
 	private Long id;
 	
@@ -18,11 +16,11 @@ public class CustomerDto {
 	private String password;
 	private String gender;
 	
-	public CustomerDto() {
+	public GuideDto() {
 		
 	}
 
-	public CustomerDto(Long id, String name, String email, String mobile, String date, String password, String gender) {
+	public GuideDto(Long id, String name, String email, String mobile, String date, String password, String gender) {
 //		super();
 		this.id = id;
 		this.name = name;

@@ -5,8 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
-
 public class CustomerDto {
 	
 	private Long id;

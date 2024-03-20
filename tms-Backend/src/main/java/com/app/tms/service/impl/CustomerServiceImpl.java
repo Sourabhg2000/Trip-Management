@@ -4,11 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.app.tms.dto.AuthRequest;
-import com.app.tms.dto.AuthResponse;
 import com.app.tms.dto.CustomerDto;
 import com.app.tms.entity.Customer;
 import com.app.tms.exception.ResourceNotFoundException;
@@ -21,14 +18,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     //private final CustomerRepository customerRepository;
 
-	 private final CustomerRepository customerRepository;
-	    private final PasswordEncoder passwordEncoder; 
+	private CustomerRepository customerRepository;
+	
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
-	    @Autowired
-	    public CustomerServiceImpl(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
-	        this.customerRepository = customerRepository;
-	        this.passwordEncoder = passwordEncoder;
-	    }
     @Override
     public CustomerDto createCustomer(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto);
@@ -76,15 +71,10 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.deleteById(customerId);
 	}
 	
-	
 	@Override
-	public CustomerDto findByFullName(String fullName) {
-	    Customer customer = customerRepository.findByFullName(fullName);
-	    if (customer == null) {
-	        throw new ResourceNotFoundException("Customer not found with full name: " + fullName);
-	    }
-	    return CustomerMapper.mapToCustomerDto(customer);
+	public Customer verification(String email, String name) {
+		Customer verifyCustomer = CustomerRepository.findByEmailAndName(email,name);
+		System.out.println(verifyCustomer);
+		return verifyCustomer;
 	}
-
-	
 }
